@@ -1,34 +1,34 @@
 # jsx2str
 A stupid function to use jsx as template without react.
 
-Doesn't behave exactly like React.createElement, can be used this way:
+Doesn't behave exactly like React.createElement (e.g. Can't pass an object to style attribute...), can be used this way:
 
 ```jsx
 // Import or paste jsx2str function here
 const React = {createElement: jsx2str}
 
-const Tweet = (name, body, time) => {
+const Tweet = (props) => {
   return (
     <li className="tweet">
-      <h3>{name}</h3>
-      <p>{time}</p>
-      <p>{body}</p>
+      <h3>{props.name}</h3>
+      <p>{props.time}</p>
+      <p>{props.body}</p>
+      <hr />
     </li>
   )
 }
 
-const Tweets = (tweets) => {
-  return tweets.map((tweet) => Tweet(tweet.name, tweet.body, tweet.time)).join("")
+const Tweets = (props) => {
+  return props.tweets.map((tweet) => <Tweet name={tweet.name} time={tweet.time} body={tweet.body} />).join("")
 }
 
-const TweetContainer = (tweets) => {
+const TweetContainer = (props) => {
   return (
     <ul className="tweetContainer">
-      {Tweets(tweets)}
+      <Tweets tweets={props.tweets} />
     </ul>
   )
 }
-
 
 let tweetsSrc = [
   {name: "Jon Snow", time: "12:40", body: "I am the king in the north"},
@@ -37,6 +37,7 @@ let tweetsSrc = [
 ]
 
 let el = document.createElement('div');
-el.innerHTML = TweetContainer(tweetsSrc)
+el.innerHTML = <TweetContainer tweets={tweetsSrc} />
+console.log(el.innerHTML)
 document.body.appendChild(el);
 ```
