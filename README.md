@@ -38,6 +38,5 @@ let tweetsSrc = [
 
 let el = document.createElement('div');
 el.innerHTML = <TweetContainer tweets={tweetsSrc} />
-console.log(el.innerHTML)
 document.body.appendChild(el);
 ```
