@@ -1,7 +1,7 @@
 function jsx2src(tag, attr, ...content) {
-  if (!content) {
-    if (/<.+>\w/.test(tag)) {
-      return tag
+  if (content.length === 0) {
+    if (typeof tag === "function") {
+      return tag(attr)
     }
     else {
       let strArr = []
