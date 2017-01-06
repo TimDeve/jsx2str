@@ -4,9 +4,7 @@ function jsx2src(tag, attr, ...content) {
       return tag(attr)
     }
     else {
-      let strArr = []
-      strArr.push(`<${tag}`)
-
+      let strAttr = []
       for (let key in attr) {
          let attrName = ""
          switch(key) {
@@ -19,17 +17,14 @@ function jsx2src(tag, attr, ...content) {
            default:
              attrName = key
          }
-         strArr.push(` ${attrName}="${attr[key]}"`)
+         strAttr.push(` ${attrName}="${attr[key]}"`)
       }
 
-      strArr.push(">")
-      return strArr.join("")
+      return strArr.push(`<${tag} ${strAttr.join("")}>`)
     }
   }
-  else if (content) {
-    let strArr = []
-    strArr.push(`<${tag}`)
-
+  else if (content.length !== 0) {
+    let strAttr = []
     for (let key in attr) {
       let attrName = ""
       switch(key) {
@@ -42,13 +37,10 @@ function jsx2src(tag, attr, ...content) {
         default:
           attrName = key
       }
-      strArr.push(` ${attrName}="${attr[key]}"`)
+      strAttr.push(` ${attrName}="${attr[key]}"`)
     }
 
-    strArr.push(">")
-    strArr.push(...content)
-    strArr.push(`</${tag}>`)
-    return strArr.join("")
+    return `<${tag} ${strAttr.join("")}>${content.join("")}</${tag}>`
   }
 }
 
