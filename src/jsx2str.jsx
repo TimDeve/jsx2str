@@ -1,4 +1,4 @@
-function jsx2srt(tag, attr, ...content) {
+function jsx2str(tag, attr, ...content) {
   if (typeof tag === "function") {
     return tag(attr)
   }
@@ -28,4 +28,4 @@ function jsx2srt(tag, attr, ...content) {
   }
 }
 
-export default jsx2srt
+export default jsx2str
