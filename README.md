@@ -7,7 +7,7 @@ Doesn't behave exactly like React.createElement (e.g. Can't pass an object to st
 // Import or paste jsx2str function here
 const React = {createElement: jsx2str}
 
-const Tweet = (props) => {
+const Tweet = props => {
   return (
     <li className="tweet">
       <h3>{props.name}</h3>
@@ -18,11 +18,11 @@ const Tweet = (props) => {
   )
 }
 
-const Tweets = (props) => {
-  return props.tweets.map((tweet) => <Tweet name={tweet.name} time={tweet.time} body={tweet.body} />).join("")
+const Tweets = props => {
+  return props.tweets.map(tweet => <Tweet name={tweet.name} time={tweet.time} body={tweet.body} />).join("")
 }
 
-const TweetContainer = (props) => {
+const TweetContainer = props => {
   return (
     <ul className="tweetContainer">
       <Tweets tweets={props.tweets} />
@@ -33,10 +33,10 @@ const TweetContainer = (props) => {
 let tweetsSrc = [
   {name: "Jon Snow", time: "12:40", body: "I am the king in the north"},
   {name: "Uncle Ben", time: "11:35", body: "With great power comes great responsabilities"},
-  {name: "That guy from Jaw", time: "08:14", body: "We're gonna need a bigger boat"}
+  {name: "That guy from Jaw", time: "08:14", body: "We're gonna need a bigger boat"},
 ]
 
-let el = document.createElement('div');
+let el = document.createElement('div')
 el.innerHTML = <TweetContainer tweets={tweetsSrc} />
-document.body.appendChild(el);
+document.body.appendChild(el)
 ```
