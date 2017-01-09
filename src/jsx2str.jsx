@@ -1,9 +1,9 @@
-function jsx2src(tag, attr, ...content) {
+function jsx2srt(tag, attr, ...content) {
   if (typeof tag === "function") {
     return tag(attr)
   }
   else {
-    let strAttr = []
+    let attrArr = []
     for (let key in attr) {
        let attrName = ""
        switch(key) {
@@ -16,16 +16,16 @@ function jsx2src(tag, attr, ...content) {
          default:
            attrName = key
        }
-       strAttr.push(` ${attrName}="${attr[key]}"`)
+       attrArr.push(` ${attrName}="${attr[key]}"`)
     }
 
     if (content.length === 0) {
-      return `<${tag} ${strAttr.join("")}>`
+      return `<${tag} ${attrArr.join("")}>`
     }
     else {
-      return `<${tag} ${strAttr.join("")}>${content.join("")}</${tag}>`
+      return `<${tag} ${attrArr.join("")}>${content.join("")}</${tag}>`
     }
   }
 }
 
-export default jsx2src
+export default jsx2srt
