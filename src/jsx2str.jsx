@@ -1,5 +1,7 @@
 function jsx2str(tag, attr, ...content) {
   if (typeof tag === "function") {
+    attr = attr || {}
+    attr["children"] = content
     return tag(attr)
   }
   else {
