@@ -22,10 +22,10 @@ function jsx2str(tag, attr, ...content) {
     }
 
     if (content.length === 0) {
-      return `<${tag} ${attrArr.join("")}>`
+      return `<${tag}${attrArr.join("")}>`
     }
     else {
-      return `<${tag} ${attrArr.join("")}>${content.join("")}</${tag}>`
+      return `<${tag}${attrArr.join("")}>${content.join("")}</${tag}>`
     }
   }
 }
